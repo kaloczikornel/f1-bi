@@ -19,3 +19,6 @@ npm install
 
 A futtatás Mac-en lett tesztelve, Linux-on is működnie kellene. A programokat a `localhost:9200` és a `localhost:5601` 
 címeken lehet elérni. A program M1-es Mac-en lett tesztelve.
+
+## Dokumentáció
+[Itt található](./documentation.md)
