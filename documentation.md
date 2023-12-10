@@ -21,7 +21,7 @@
 - a vizsgált időszakhoz tartozó évek alapján lekérjük az összes csapatot
 - a csapatokat egy listába tesszük, ahol kiszűrjük a duplikációkat
 
-`cache/constructors.json` - a kinyert adatokat tartalmazza
+`cache/constructors.json` - a kinyert adatokat tartalmazza. [Kinyerést végző program itt található.](./scripts/extractConstructors.js)
 ## Pályák kinyerése 
 ##### https://ergast.com/api/f1/{year}/circuits.json
 
@@ -30,7 +30,7 @@
 - a vizsgált időszakhoz tartozó évek alapján lekérjük az összes pályát
 - a pályákat egy listába tesszük, ahol kiszűrjük a duplikációkat
 
-`cache/circuits.json` - a kinyert adatokat tartalmazza
+`cache/circuits.json` - a kinyert adatokat tartalmazza. [Kinyerést végző program itt található.](./scripts/extractCircuits.js)
 
 ## Versenyzők kinyerése
 ##### https://ergast.com/api/f1/{year}/drivers.json
@@ -39,7 +39,7 @@
 - a vizsgált időszakhoz tartozó évek alapján lekérjük az összes versenyzőt
 - a versenyzőket egy listába tesszük, ahol kiszűrjük a duplikációkat
 
-`cache/drivers.json` - a kinyert adatokat tartalmazza
+`cache/drivers.json` - a kinyert adatokat tartalmazza. [Kinyerést végző program itt található.](./scripts/extractDrivers.js)
 
 ## Időmérő helyezések kinyerése
 ##### https://ergast.com/api/f1/{year}/qualifying.json
@@ -61,7 +61,7 @@ majd kapott struktúrát transzformálni kell a következő formára:
     ]
 ```
 
-`cache/qualifyingResults.json` - a kinyert adatokat tartalmazza
+`cache/qualifyingResults.json` - a kinyert adatokat tartalmazza. [Kinyerést végző program itt található.](./scripts/extractQualifyingResults.js)
 
 ## Verseny helyezések kinyerése
 ##### https://ergast.com/api/f1/{year}/results.json
@@ -82,7 +82,7 @@ A vizsgált időszakhoz tartozó évek alapján lekérjük az összes verseny he
 ]
 ```
 
-`cache/raceResults.json` - a kinyert adatokat tartalmazza
+`cache/raceResults.json` - a kinyert adatokat tartalmazza. [Kinyerést végző program itt található.](./scripts/extractRaceResults.js)
             
 ## Csapat pontok és helyezések kinyerése
 ##### https://ergast.com/api/f1/{year}/constructorStandings.json
@@ -101,7 +101,7 @@ A vizsgált időszakhoz tartozó évek alapján lekérjük az összes csapat pon
 ]
 ```
 
-`cache/constructorStandings.json` - a kinyert adatokat tartalmazza
+`cache/constructorStandings.json` - a kinyert adatokat tartalmazza. [Kinyerést végző program itt található.](./scripts/extractConstructorStandings.js)
 
 ## Adatok mentése Elasticsearch-be
 `createIndex.js`
@@ -146,7 +146,7 @@ A meglévő adatokat egy Elasticsearch adatbázisba mentjük, ahol a következő
 
 
 ## Adatok megjelenítése Kibanában
-Az adatok megjeelnítéséhez a Kibana-t használtam, ahol a következő dashboardokat hoztam létre:
+Az adatok megjelnítéséhez a Kibana-t használtam, ahol a következő dashboardokat hoztam létre:
 ### Consturctor standings
 ![Constructor standings](./images/constructor_standings.png)
 -   Az első diagramon pedig a csapatok helyezése az évek függvényében.
@@ -182,8 +182,8 @@ További csomagok amiket használtam:
 
 ### Tapasztalatok leírása
 Az eredményeket tekintve levonható az a következtetés, hogy általánosan az időmérő helyezés és a verseny helyezés között
-van egy erős korreláció. A mediánok alapján pedig látható, hogy a verseny illetve az időmérő helyezések mediánja nem tér el
-nagyban egymástól. A konstruktorok helyezése alapján pedig látható, hogy az előző évek eredmény nem befolyásolja a következő
+van egy erős korreláció. Továbbá pedig látható, hogy a verseny illetve az időmérő helyezések mediánja nem tér el
+nagyban egymástól. A konstruktorok helyezése alapján pedig látható, hogy az előző évek eredménye nem befolyásolja a következő
 év eredményét egyértelműen. 
 
 ### Továbbfejlesztési lehetőségek
@@ -191,3 +191,13 @@ A program számos helyen egyszerűen bővíthető. A szkriptek adott helyen val�
 a struktúrát valmamint a kinyert adatokat. Az index létrehozásához használt mapping is könnyen módosítható, így a kinyert
 adatokat könnyen lehet megjeleníteni Kibanában. A programot könnyen lehetne bővíteni újabb adatokkal. Ehhez csak az index
 letrehozásához használt szkriptet szükséges futtatni miután a szüséges adatokat kinyertük.
+
+## Összegezés
+A feladat megoldásához szükséges adatokat sikeresen kinyertem, majd ezeket transzformálás után Elasticsearch adatbázisba
+vagy adattárházba mentettem. Így munkám során általános ETL folyamatokat készítettem. A követelményeknek megfelelően az
+összes szükséges adatot kinyertem, melyeket cache-elés szemponjátból el is mentettem. Az elemzéshez szükséges adatokat
+sikeresen feltöltöttem Elasticsearch-be, és megjelenítettem Kibana segítségével. Készítettem dashboardokat, melyekről leolvashatóak
+azon összefüggések melyek a specifikációban leírt céloknak megfelelnek. Feladatomban a hangsúlyt a technológiák használatára
+fektettem mintsem a vizsgált adatok elemzésére. A programot úgy készítettem el, hogy könnyen bővíthető legyen, így a későbbiekben
+egyszerűen lehet újabb adatokat kinyerni és megjeleníteni. Használtam kódolási konvenciókat, valamint sok kommentet írtam, hogy 
+a program egyszerűen érthető legyen. 
