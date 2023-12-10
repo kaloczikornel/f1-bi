@@ -2,7 +2,7 @@
 
 ## Leírás
 A program egy F1-es adatbázisból kinyeri a versenyzők és a csapatok adatait, majd ezeket egy Elasticsearch adatbázisba
-menti. A program a versenyzők és a csapatok adatait Kibanában lehet megtekinteni. A program Node.js-ben íródott valamint
+menti. A versenyzők és a csapatok adatait Kibanában lehet megtekinteni. A program Node.js-ben íródott valamint
 dockert használ az Elasticsearch valamint a Kibana futtatásához, így a docker deamon valamint a Node.js előkövetelménye 
 a futtatásnak. 
 

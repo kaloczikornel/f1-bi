@@ -173,7 +173,7 @@ A feladat megoldásához a következő technológiákat használtam:
 - `Docker v20.0.6` - a program futtatásához (elasticsearch, kibana)
 - `Elasticsearch v8.6.2` - az adatok tárolásához
 - `Kibana v8.6.2` - az adatok megjelenítéséhez
-- 
+
 További csomagok amiket használtam:
 - `axios` - http kérések küldéséhez
 - `eslint` - kód konvenciók betartásához
